@@ -44,5 +44,5 @@ iCon3D is very fast. On average it takes only a few minutes on a single core to 
 
 - The list of PDB chains of FRAGFOLD dataset can be found [here](data/FRAGFOLD_150.txt) 
 - The list of Target IDs of CASP12 and CASP13 FM targets can be found [here](data/CASP12_13_FM.txt) 
-- The list of PDB chains of 510 non-redundant Membrane protein dataset can be found [here](data/Membrane_510.txt) 
+- The list of PDB chains of 510 membrane protein dataset can be found [here](data/Membrane_510.txt) 
 - The list of PDB chains of EVfold dataset can be found [here](data/EVfold_15.txt) 
