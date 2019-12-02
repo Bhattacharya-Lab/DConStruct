@@ -1,19 +1,14 @@
 #!/usr/bin/python
-"""
-************************************************************************
-                           
-# iCon3D - Iterative Contact-assisted 3D Protein Folding 
+
+# iCon3D - Improved Contact-assisted 3D Protein Folding Protocol
 
 # By Rahmatullah Roche & Debswapna Bhattacharya, December 2019
 
 # License: GPL-3.0
 
-# Copyright (C) Debswapna Bhattacharya 2019
+# Copyright (C) Bhattacharya Laboratory 2019
 
 # V1.0
-
-************************************************************************
-"""
 
 from __future__ import print_function
 import os
