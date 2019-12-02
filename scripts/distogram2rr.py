@@ -25,7 +25,7 @@ parser.add_option('-r', dest='rr',
         help = 'name of output contact map')
 parser.add_option('-x', dest='L',
         default = '12',    # default 12
-        help = 'contact cutoff xL, where L is the sequence length')
+        help = 'top contact cutoff xL, where L is the sequence length')
 
 (options,args) = parser.parse_args()
 dist = options.dist
