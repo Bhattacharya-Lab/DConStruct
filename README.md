@@ -22,7 +22,7 @@ To see the usage instructions, run `python iCon3D_V1.0.py -h`
 - Secondary structure (-s): Single line containing a sequence of 3-state secondary structure (i.e. 'H', 'E' and 'C'). For example, see `./examples/input/T0869.ss`
 - Output (-o): Output directory path.
 - Random seed (-n): Number to be used as random seed. Default is 7.
-- Contact type (-c): To define whether the contact is C<sub>α</sub>–C<sub>α</sub> or C<sub>β</sub>–C<sub>β</sub>. Put `-c cb` for C<sub>β</sub>–C<sub>β</sub> contact.
+- Contact type (-c): To define whether the contact is C<sub>α</sub>–C<sub>α</sub> or C<sub>β</sub>–C<sub>β</sub>. Put `-c ca` for C<sub>α</sub>–C<sub>α</sub> contacts and `-c cb` for C<sub>β</sub>–C<sub>β</sub> contacts.
 - Contact cutoff (-x): To select top xL contacts, where L is the sequence length of protein. For example, put `-x 8` to select top 8L contacts.
 - Modeller path (-m): Modeller program path that contains `modpy.sh`.
 
