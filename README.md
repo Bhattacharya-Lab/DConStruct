@@ -4,7 +4,7 @@ Improved Contact-assisted 3D Protein Folding Protocol
 
 ## Installation
 
-The following instructions should work in 64-bit Linux system:
+The following installation instructions should work in 64-bit Linux system:
 - Make sure you have Python with NumPy, SciPy and Scikit-learn installed. iCon3D has been tested on Python 2.7, but it should run on higher versions as well.
 - Install [MODELLER](https://salilab.org/modeller), a license key is required. This can be installed using command `conda install modeller -c salilab`. iCon3D has been tested on MODELLER version 9.20.
 
