@@ -18,7 +18,7 @@ To see the usage instructions, run `python iCon3D_V1.0.py -h`
 ### File formats and parameters
  
 - Amino Acid (-a): The first line contains the header of the target protein and the second line contains the amino acid sequence. For example, see `./examples/input/T0869.fasta`
-- Contacts (-r): The first line contains the amino acid sequence followed by list of contact rows using a five-column format similar to CASP RR format. In each contact row, first two columns are the residue pairs in contact, third and fourth columns are lower and upper bounds of their distance (in Angstrom) respectively, and fifth column is a real number indicating the probability of the two residues being in contact. For example, see `./examples/input/T0869.rr`
+- Contacts (-r): The first line contains the amino acid sequence followed by list of contact rows using a five-column format similar to CASP RR format. In each contact row, first two columns are the residue pairs in contact, third and fourth columns are lower and upper bounds of their distance (in Å) respectively, and fifth column is a real number indicating the probability of the two residues being in contact. For example, see `./examples/input/T0869.rr`
 - Secondary structure (-s): Single line containing a sequence of 3-state secondary structure (i.e. 'H', 'E' and 'C'). For example, see `./examples/input/T0869.ss`
 - Output (-o): Output directory path.
 - Random seed (-n): Number to be used as random seed. Default is 7.
