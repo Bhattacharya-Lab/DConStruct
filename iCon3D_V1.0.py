@@ -36,21 +36,21 @@ parser.add_option('-a', dest='aa',
 parser.add_option('-s', dest='ss',
         default = '',    # default empty
         help = 'secondary structure file (mandatory)')
+parser.add_option('-m', dest='M',
+        default = '',    # default empty
+        help = 'MODELLER program path that contains modpy.sh script (mandatory)')
 parser.add_option('-o', dest='output',
         default = '',    # default empty
-        help = 'output directory (mandatory)')
+        help = 'existing output directory path (mandatory)')
 parser.add_option('-n', dest='no',
         default = '7',    # default 7
-        help = 'number to be used as seed (optional); default 7')
+        help = 'positive integer to be used as seed (optional); default 7')
 parser.add_option('-c', dest='ctype',
         default = 'ca',    # default ca 
         help = 'contact type ca or cb (optional); default ca')
 parser.add_option('-x', dest='L',
         default = '10000',    # default all
         help = 'top xL contacts, where L is the sequence length (optional); default all')
-parser.add_option('-m', dest='M',
-        default = '',    # default current
-        help = 'modeller path (optional); default is current working directory')
 
 
 (options,args) = parser.parse_args()
@@ -62,35 +62,84 @@ no = options.no
 ctype = options.ctype
 L = options.L
 M = options.M
+
+
+#header
+
+print("\n****************************************************************")
+print("*                            iCon3D                            *")
+print("*  Improved Contact-assisted 3D Protein Folding Protocol       *")
+print("*                                                              *")
+print("*  For comments, please email to bhattacharyad@auburn.edu      *")
+print("****************************************************************\n")
+
+def print_usage():
+        print("\nUsage: iCon3D_V1.0.py [options]\n")
+
+        print("Options:")
+        print(" -h, --help  show this help message and exit")
+        print(" -r RR       rr file in CASP format containing the contact map (mandatory)")
+        print(" -a AA       fasta file containing the amino acid sequence (mandatory)")
+        print(" -s SS       secondary structure file (mandatory)")
+        print(" -m M        MODELLER program path that contains modpy.sh script")
+        print("             (mandatory)")
+        print(" -o OUTPUT   existing output directory path (mandatory)")
+        print(" -n NO       positive integer to be used as seed (optional); default 7")
+        print(" -c CTYPE    contact type ca or cb (optional); default ca")
+        print(" -x L        top xL contacts, where L is the sequence length (optional);")
+        print("             default all\n")
+
+
+try:
+        check_r = int(no)
+except ValueError:
+        print ('Error! -n must be positive integer. Exiting ...')
+        print_usage()
+        sys.exit()
+
+if (float(no) <= 0):
+        print ('Error! -n must be positive integer. Exiting ...')
+        print_usage()
+        sys.exit()
+
 seed = np.random.RandomState(seed = int(no)) #giving seed for sklearn MDS state
 random.seed(1000 + int(no)) #giving a seed to generate same random values always
 
+
 #basic input check
 if (rr == ''):
-        print ('rr file input is mandatory. exiting ...')
+        print ('Error! RR file must be provided. Exiting ...')
+        print_usage()
         sys.exit()
 if (aa == ''):
-        print ('fasta file input is mandotory. exiting ...')
+        print ('Error! Fasta file must be provided. Exiting ...')
+        print_usage()
         sys.exit()
 if (ss == ''):
-        print ('secondary structure file input is mandatory. exiting ...')
+        print ('Error! Secondary structure file must be provided. Exiting ...')
+        print_usage()
         sys.exit()
 if (output == ''):
-        print ('output directory name is mandatory. exiting ...')
+        print ('Error! Output directory must be provided. Exiting ...')
+        print_usage()
         sys.exit()
 
-#existance check
+#existence check
 if not os.path.exists(rr):
-        print ('no such rr file found. exiting ...')
+        print ('Error! No such rr file found. Exiting ...')
+        print_usage()
         sys.exit()
 if not os.path.exists(aa):
-        print ('no such fasta file found. exiting ...')
+        print ('Error! No such fasta file found. Exiting ...')
+        print_usage()
         sys.exit()
 if not os.path.exists(ss):
-        print ('no such secondary structure file found. exiting ...')
+        print ('Error! No such secondary structure file found. Exiting ...')
+        print_usage()
         sys.exit()
 if not os.path.exists(output):
-        print ('no such output file found. exiting ...')
+        print ('Error! No such output directory found. Exiting ...')
+        print_usage()
         sys.exit()
 
 #rr, fasta and ss sanity check
@@ -102,23 +151,27 @@ fss = open(ss, 'r')
 fslines = fss. readlines()
 
 if (len(falines) != 2):
-        print ('incompatible fasta file. file should be the format of - first line: fasta name, second line: sequence')
+        print ('Incompatible fasta file. File format should be - first line: fasta name, second line: sequence. Exiting ...')
+        print_usage()
         sys.exit()
 if (len(fslines) != 1):
-        print ('incompatible ss file. file should be the format of - first line: ss sequence')
-
+        print ('Incompatible ss file. File format should be - first line: ss sequence. Exiting ...')
+        print_usage()
+        sys.exit()
 rrfasta = frlines[0].strip()
 aafasta = falines[1].strip()
 ssfasta = fslines[0].strip()
 
 if (len(rrfasta) != len(aafasta) or len(ssfasta) != len(aafasta)):
-        print ('rr file, fasta file and ss file length mismatch. exiting ...')
+        print ('RR file, fasta file and ss file length mismatch. Exiting ...')
+        print_usage()
         sys.exit()
 for i in ssfasta:
         if (i == 'H' or i == 'C' or i == 'E'):
                 pass
         else:
-                print ('invalid secondary structure. exiting ...')
+                print ('Invalid secondary structure. Exiting ...')
+                print_usage()
                 sys.exit()
 
 frr.close()
@@ -133,19 +186,44 @@ _, rrfile = os.path.split(rr)
 _, ssfile = os.path.split(ss)
 
 if (M == ''):
-	M = os.getcwd()
-modeller = M + '/modpy.sh'
+        print ('Error! MODELLER program full path must be provided. Exiting ...')
+        print_usage()
+        sys.exit()
+
+modeller = os.path.abspath(M + '/modpy.sh')
+#modeller = M + '/modpy.sh'
+
+
+if (not os.path.exists(modeller)):
+        print ('Error! MODELLER not found. Exiting ...')
+        print_usage()
+        sys.exit()
+
+if (float(L) <= 0):
+        print ('Error! -x must be > 0. Exiting ...')
+        print_usage()
+        sys.exit()
+
+if (ctype != 'ca' and ctype != 'cb'):
+        print ('Error! Contact type must be \'ca\' or \'cb\'. Exiting ...')
+        #print(ctype)
+        print_usage()
+        sys.exit()
+
+
 
 class iCon3D():
         """
         the iCon3D class
         """
         def __init__(self):
-                #constructor, initializing values: target rr file to contact map, ss, aa, t and thresh hold values
-                print ('target ' + aa_file)
+                #constructor, initializing values: target rr file to contact map, ss, aa, and threshold values
+                print ('Target             : ' + aa_file)
+
                 self.target = rr
                 fr = open(self.target, 'r')
                 lines = fr.readlines()
+                Sequence = lines[0].strip()
                 n = len(lines[0]) - 1 #taking the number of residues
                 pairList = []
                 self.CM = [[0 for x in range(n)] for y in range(n)]
@@ -153,8 +231,7 @@ class iCon3D():
                 l = 0
                 for line in lines[1:]:
                         line = line.strip().split()
-                        #for predicted contact
-                        #if(float(line[4]) <= 0.35): #for predicted contact, break if probablity threshs hold is > 0.35
+                        
                         if(l > n * float(L)):
 
                                 break
@@ -173,7 +250,13 @@ class iCon3D():
                 line1 = line1.strip().split()
 
                 self.t = float(line1[3]) #considering t as thresh hold, given in each line at column 4
-                print ('thresh hold is ' + str(self.t))
+                print ('Length             : ' + str(n))
+                print ('Threshold          : ' + str(self.t) +' (Angstrom)')
+                if (L == '10000'):
+                        print ('Cutoff xL          : All')
+                else:
+                        print ('Cutoff xL          : ' + L)
+                print ('Contact type       : ' + ctype)
                 self.T = math.floor(self.t)  #intially taking floor of thresh hold divided by distance between 2 consecutive residues need some calculations based on CM
                 fr.close()
                 fletter = {'A':'ALA', 'B':'ASX' , 'C':'CYS', 'D':'ASP', 'E':'GLU', 'F':'PHE', 'G':'GLY', 'H':'HIS', 'I':'ILE', 'K':'LYS', 'L':'LEU', 'M':'MET', 'N':'ASN',
@@ -182,21 +265,21 @@ class iCon3D():
                 self.fasta = aa
                 fs = open(self.fasta, 'r')
                 flines = fs.readlines()
-                print ('sequence:            ' + str(flines[1]))
+                #print ('Sequence           : ' + Sequence))
                 for line in flines[1:]:
                         line = line.strip()
                         for i in line:
 
                                 self.res_name.append(fletter[i])
                 fs.close()
-                #print ('res name number ' + str(len(self.res_name)))
+                
                 self.ss = ss
 
                 fss = open(self.ss, 'r')
                 self.secondary = fss.read()
                 self.secondary = self.secondary.split() #secondary structure is now in self.secondary[0]
                 fss.close()
-                print ('secondary structure: ' + str(self.secondary[0]))
+                #print ('Secondary structure: ' + str(self.secondary[0]))
                 self.helices = []
                 self.sheets = []
                 i = 1
@@ -270,7 +353,7 @@ class iCon3D():
                                 self.CM[i][j] = self.CM[j][i] = 0
                         else:
                                 self.gdfCM[i][j] = self.gdfCM[j][i] = 1
-                                return 6.45 + random.uniform(-1, 1) #empirical
+                                return 6.45 + random.uniform(-1, 1) 
 
                                 self.CM[i][j] = self.CM[j][i] = 1
 
@@ -285,8 +368,8 @@ class iCon3D():
                                 self.CM[i][j] = self.CM[j][i] = 0
                         else:
 
-                                #return max(3.5, (.91 - (t/100))*t ) #+ random.uniform((.91 - (t/100))*t - t, t - (.91 - (t/100))*t)) #+ random.uniform(-t + ((0.91 - (t/100)) * t) , t - ((0.91 - (t/100)) * t)))
-                                return random.gauss(6.64, 1.36) #empirical
+                                
+                                return random.gauss(6.64, 1.36) 
                                 self.gdfCM[i][j] = 1
 
         #following two methods are for alpha helix optimization using lbfgs
@@ -318,7 +401,7 @@ class iCon3D():
                                         f2 += ((math.sqrt((newpoint[0] - pos[k][0]) ** 2 + (newpoint[1] - pos[k][1]) ** 2 + (newpoint[2] - pos[k][2]) ** 2) - D[k][i]) ** 2 / (sd2 ** 2))
                 return f2
 
-        #this method initally generates a distance matrix, by using shortest path algorithm, it obtains euclidean distance map and finally refined by secondary structure angular space to distance conversion procedure
+        #this method initally generates a sparse matrix; then by using shortest path algorithm, it obtains proximity map which is refined by secondary structure angular space to distance conversion procedure
         def guess_dist(self):
                 n = len(self.CM)
 
@@ -387,7 +470,7 @@ class iCon3D():
         def cAlphaBetaCost(self, pos):
                 chiralAlpha = [[0, 0, 0], [0, 0, 0], [0, 0, 0]] #the matrix |xi - xi-1 yi - yi-1 zi - zi-1| for alpha helix
                 chiralBeta = [[0, 0, 0], [0, 0, 0], [0, 0, 0]] #the matrix |xi - xi-1 yi - yi-1 zi - zi-1| for beta sheet
-                chiDist = [] #saves distances between two consecutive 
+                chiDist = [] 
                 alphaCost = 0
                 betaCost = 0
 
@@ -438,9 +521,9 @@ class iCon3D():
 
                                 alphaCost = alphaCost + (2 / (1 + math.exp(-10 * (chiA - idealAlpha) * (chiA - idealAlpha)))) - 1  # O Lund et al equation 3, s = 10
 
-                return (betaCost + alphaCost) # O Lund et al equation 10
+                return (betaCost + alphaCost) 
 
-        #this method reverse the 3D coordinates to its y axis   
+        #this method reverses the 3D coordinates to its y axis   
         def mirror(self, pos):
 
                 posy = [[0 for x in range(3)] for y in range (len(pos))]
@@ -453,7 +536,7 @@ class iCon3D():
 
                 return posy
         #uses python sklearn library for 3D multidimensional scaling, get initial (20 or more) 3D protein residue coordinates, selects best 5, refines using contact information, ss information and empirical knowledge about protein and generates 5 models as input to the modeller
-        def embed3(self):
+        def mds3(self):
 
                 D = self.guess_dist()
                 D = self.ChunksImproveDist(D)
@@ -464,7 +547,7 @@ class iCon3D():
                 dist = prevDist = 0
                 posd = []
                 #print ('Generating 20 models ...')
-                print ('Starting Stage 1 ...')
+                print ('\nStarting Stage 1 of 3 ...')
                 for i in range(20):
                         random.seed(i+int(no))
                         D = self.guess_dist()
@@ -477,12 +560,13 @@ class iCon3D():
 
                 posc = self.correctCM(pos)
 
-                print('Stage 1 complete! Starting Stage 2 ...')
+                print('Done! \n')
+                print('Starting Stage 2 of 3 ...')
                 eps = [x * 0.0085 for x in range(0, 100)]
                 eps1 = eps
-                print ('Initial refining 20 models ...')
+                #print ('Initial refining 20 models ...')
                 for i in range(len(posd)):
-                        #as the distance map is generated using shortest path which is basically upper bound of distances, the models generated using the distance map is assumed not compact, so making it compact
+                        #as the proximity map is generated using shortest path which is basically upper bound of distances, so, making models compact
                         xc, yc, zc = self.calculateCentroid(posd[i])
                         Rg = 2.2 * (len(posd[i]) ** 0.38)
 
@@ -540,7 +624,8 @@ class iCon3D():
                         best.append({'pos' : posd[b], 'score' :cmScore})
                 sbest = sorted(best, key = lambda i : i['score'])
                 #print ('Generated initial top 5 models! ')
-                print('Stage 2 complete! Starting Stage 3 ...')
+                print('Done! \n')
+                print('Starting Stage 3 of 3 ...')
                 for i in range(5):
                         c = self.cAlphaBetaCost(sbest[i]['pos'])
                         cM = self.cAlphaBetaCost(self.mirror(sbest[i]['pos']))
@@ -764,7 +849,7 @@ class iCon3D():
 
 
 
-        #the following two method is for making the pdb coordinates compact
+        #the following two methods are for making the pdb coordinates compact
         def perturb(self, pos, eps):
                 for i in range(len(self.CM)):
 
@@ -966,7 +1051,7 @@ class iCon3D():
 
                 return pos
 
-        #checking if the 3D is consistant with contact map
+        #checking if the 3D structure is consistant with contact map
         def consistant(self, pos):
                 for i in range(len(self.CM)):
                         for j in range(i):
@@ -1049,7 +1134,7 @@ class iCon3D():
 
                 return D
 
-        #takes pos (3d cordinate list), alpha and tau angle and return pos with an appended corrdinate(x, y, z)
+        #takes pos (3d cordinate list), alpha and tau angle and returns pos with an appended corrdinate(x, y, z)
         def setCoordinate(self, pos, alpha, tau):
                 x = 0
                 y = 1
@@ -1565,14 +1650,17 @@ class iCon3D():
 def main():
         start = time. time()
 
-        print ('starting ...')
+        
         r1 = iCon3D() #initialization
-        r1.embed3() #initial models 
+        r1.mds3() #initial models 
 
         for i in range(1, 6):
                 file_path = output + '/' + aa_file + 'bestmodel' + str(i) + '.pdb'
                 while not os.path.exists(file_path):
                         time.sleep(1)
+        
+                
+                
 
         #creating temp directory for modeller refinement
         os.system('mkdir ' + output + '/' + aa_file +'temp')
@@ -1597,7 +1685,9 @@ def main():
         os.chdir( output + '/' + aa_file +'temp/')
         r1.generateModellerScript()
         time.sleep(1) #wait to generate the script
-        print ('running modeller ...')
+        
+
+        #print ('Running MODELLER ...')
         for i in range(1, 6):
                 for lp in range(30):
                         os.system(modeller + ' python model_ss_cm.py -f '  + aa_file + str(i) + '.ali --ss ' + ssfile  + ' --rr ' + rrfile + ' --target ' +  aa_file + 'bestmodel' + str(i) + ' --ctype '+ ctype +' --template '  +  aa_file + 'bestmodel' + str(i) + ' > modeller.log')
@@ -1632,7 +1722,9 @@ def main():
                 os.system('rm ' + output + '/' + aa_file + 'bestmodel' + str(i) + '.pdb')
 
         end = time. time()
-        print ('finished! \nTime taken ' + str(end - start) + ' seconds')
+        print('Done!\n')
+        print ('Finished! Time taken = ' + str(round((end - start)/60, 1)) + ' Minutes\n')
+        print('Final models are saved in the output directory')
 
 if __name__ == "__main__":
         main()
