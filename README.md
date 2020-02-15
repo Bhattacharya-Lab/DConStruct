@@ -1,6 +1,6 @@
-# iCon3D
+# DConStruct
 
-Improved Contact-assisted 3D Protein Folding Protocol
+Hybridized Distance- and Contact-based Hierarchical Structure Modeling for Folding Soluble and Membrane Proteins
 
 ## Installation
 
