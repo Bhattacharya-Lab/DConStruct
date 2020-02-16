@@ -6,7 +6,7 @@ Hybridized Distance- and Contact-based Hierarchical Structure Modeling for Foldi
 
 Installing iCon3D is very straightforward. The following instructions should work for 64-bit Linux system:
 
-- Make sure you have Python with NumPy, SciPy and Scikit-learn installed. iCon3D has been tested on Python 2.7, but it should run on higher versions as well.
+- Make sure you have Python with NumPy, SciPy and Scikit-learn installed. iCon3D has been tested on Python 2.7.5 (numpy version 1.15.2, scipy version 0.12.1 and scikit-learn version 0.19.2), but it should run on higher versions as well.
 - Install [MODELLER](https://salilab.org/modeller), a license key is required. This can be installed using command `conda install modeller -c salilab`. iCon3D has been tested on MODELLER version 9.20.
 
 That's it! iCon3D is ready to be used.
