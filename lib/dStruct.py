@@ -591,8 +591,7 @@ class dStruct():
         def correctCM(self, pos):
                 for i in range(len(self.CM)):
                         #print (pos) #new
-                        maxu = 0
-
+			maxu = 0
                         F = [0.0, 0.0, 0.0] #force vector
                         D0 = float('inf') #minimum distance within true no-contact cm[i,j] = 0
                         D1 = 0.0 #maximum distance within true contact cm[i,j] = 1
@@ -622,7 +621,7 @@ class dStruct():
                                                 D0 = min(D0, dij)
                                         else:
                                                 D1 = max(D1, dij)
-                                                maxu = max(maxu, self.pair_u[(i,j)])   
+						maxu = max(maxu, self.pair_u[(i,j)])
                         ri = min(D0 - self.t, maxu - D1)
                         Fmod = math.sqrt(F[0] * F[0] + F[1] * F[1] + F[2] * F[2])
                         if (Fmod == 0):
@@ -705,11 +704,10 @@ class dStruct():
 
                         for j in range(len(self.CM)):
 
-                                if (abs(i-j) < 5): #new
-                                        uu = self.t #new
-                                elif (self.CM[i][j] == 1):
-                                        uu = self.pair_u[(i,j)]
-
+				if (abs(i-j) < 5): #new
+					uu = self.t #new
+				elif (self.CM[i][j] == 1):
+					uu = self.pair_u[(i,j)]
 					
                                 dij = math.sqrt((pos[i][0] - pos[j][0]) * (pos[i][0] - pos[j][0]) + (pos[i][1] - pos[j][1]) * (pos[i][1] - pos[j][1]) + (pos[i][2] - pos[j][2]) * (pos[i][2] - pos[j][2]))
                                 if (self.CM[i][j] == 1 and uu - eps < dij <= uu):
@@ -1383,7 +1381,7 @@ class dStruct():
                 f.write('                       if (float(line[4]) <= 0.85): \n')
                 f.write('                               self.CM[int(line[0]) - 1][int(line[1]) - 1] = self.CM[int(line[1]) - 1][int(line[0]) - 1] = -1 \n')
 
-                f.write('                       pair_l[(int(line[0]) - 1, int(line[1]) - 1)] = pair_l[(int(line[1]) - 1, int(line[0]) - 1)] = float(line[2]) \n')
+		f.write('		       pair_l[(int(line[0]) - 1, int(line[1]) - 1)] = pair_l[(int(line[1]) - 1, int(line[0]) - 1)] = float(line[2]) \n')
                 f.write('                       pair_u[(int(line[0]) - 1, int(line[1]) - 1)] = pair_u[(int(line[1]) - 1, int(line[0]) - 1)] = float(line[3]) \n')
 
                 f.write('               mdl = template + \'.B99990001.pdb\' \n')
