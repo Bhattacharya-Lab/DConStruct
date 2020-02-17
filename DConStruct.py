@@ -77,15 +77,15 @@ M = options.M
 
 #header
 
-print("\n****************************************************************")
-print("*                            iCon3D                            *")
-print("*  Improved Contact-assisted 3D Protein Folding Protocol       *")
-print("*                                                              *")
-print("*  For comments, please email to bhattacharyad@auburn.edu      *")
-print("****************************************************************\n")
+print("\n**************************************************************************")
+print("*                                            DConStruct                    *")
+print("*  Hybridized Distance- and Contact-based Hierarchical Structure Modeling  *")
+print("*          for Folding Soluble and Membrane Proteins                       *")
+print("*  For comments, please email to bhattacharyad@auburn.edu                  *")
+print("****************************************************************************\n")
 
 def print_usage():
-        print("\nUsage: iCon3D_V1.0.py [options]\n")
+        print("\nUsage: DConStruct.py [options]\n")
 
         print("Options:")
         print(" -h, --help  show this help message and exit")
