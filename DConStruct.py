@@ -19,19 +19,12 @@
 #
 ############################################################################
 
-from __future__ import print_function
 import os
-import math
 import sys
 import optparse    # for option sorting
-import uuid
-import random
-import numpy as np
-import numpy.linalg as linalg
-from sklearn.manifold import MDS
 import time
-from scipy import optimize
-from scipy.optimize import minimize
+import numpy as np
+import random
 from decimal import *
 import lib.dStruct as ds
 import lib.cStruct as cs
@@ -77,8 +70,8 @@ M = options.M
 
 #header
 
-print("\n**************************************************************************")
-print("*                                            DConStruct                    *")
+print("\n****************************************************************************")
+print("*                       DConStruct                                         *")
 print("*  Hybridized Distance- and Contact-based Hierarchical Structure Modeling  *")
 print("*          for Folding Soluble and Membrane Proteins                       *")
 print("*  For comments, please email to bhattacharyad@auburn.edu                  *")
