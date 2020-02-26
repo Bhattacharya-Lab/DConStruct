@@ -299,9 +299,10 @@ def main():
                         time.sleep(1)
 
         os.chdir(save_path)
-        for i in range(1, 6):
-                final_model =  output + '/' + aa_file +'temp/' + 'query.B9999000' + str(i) + '.pdb'
-                r1.format_casp_pdb(final_model, output + '/' + aa_file + '_model' + str(i) + '.pdb') #casp format pdb in output file as pdbname_model(num).pdb
+	### cleaning and creating final model
+
+	final_model =  output + '/' + aa_file +'temp/' + 'query.B99990001.pdb'
+	r1.format_casp_pdb(final_model, output + '/' + aa_file + '_model1.pdb')
         os.system('rm -r ' + output + '/' + aa_file +'temp')
         for i in range(1, 6):
                 os.system('rm ' + output + '/' + aa_file + 'bestmodel' + str(i) + '.pdb')
