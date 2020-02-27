@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-#  DConStruct: Hybridized Distance- and Contact-based Hierarchical Structure Modeling for Folding Soluble and Membrane Proteins
+#  DConStruct: Hybridized distance- and contact-based hierarchical protein folding
 #
 #  Copyright (C) Bhattacharya Laboratory 2019
 #
@@ -70,12 +70,11 @@ M = options.M
 
 #header
 
-print("\n****************************************************************************")
-print("*                       DConStruct                                         *")
-print("*  Hybridized Distance- and Contact-based Hierarchical Structure Modeling  *")
-print("*          for Folding Soluble and Membrane Proteins                       *")
-print("*  For comments, please email to bhattacharyad@auburn.edu                  *")
-print("****************************************************************************\n")
+print("\n*************************************************************************")
+print("*                            DConStruct                                 *")
+print("*  Hybridized distance- and contact-based hierarchical protein folding  *")
+print("*  For comments, please email to bhattacharyad@auburn.edu               *")
+print("*************************************************************************\n")
 
 def print_usage():
         print("\nUsage: DConStruct.py [options]\n")
