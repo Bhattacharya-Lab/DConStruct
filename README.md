@@ -31,13 +31,13 @@ To run DConStruct with predicted distance-based information, we provide a helper
 
 ### Test DConStruct
 
-We give an example of running DConStruct on CASP12 FM target T0869.
+We give an example of running DConStruct on CASP13 FM target T0968s2.
 
 Create an output directory `mkdir output/`. 
 
-Run `python DConStruct.py -r examples/input/T0869.rr -a examples/input/T0869.fasta -s examples/input/T0869.ss -o output/ -c cb -x 8 -m your/modeller/path`
+Run `python DConStruct.py -r examples/input/T0968s2.rr -a examples/input/T0968s2.fasta -s examples/input/T0968s2.ss -o output/ -c cb -x 8 -m your/modeller/path`
 
-Top predicted model will be generated at `output/T0869_model1.pdb`.
+Top predicted model will be generated at `output/T0968s2_model1.pdb`.
 
 DConStruct is very fast. On average it takes only a few minutes on a single core to run DConStruct. However, the running time depends on the sequence length of the target protein. For longer targets, DConStruct may take a few hours to complete.
 
