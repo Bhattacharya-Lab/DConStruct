@@ -230,10 +230,10 @@ def main():
                         map_type = "distant"
                         break
         if (map_type == "contact"):
-                print ("contact map")
+                
                 r1 = cs.cStruct(aa, rr, output, ss, no, L, ctype)
         else:
-                print ("distance map")
+                
                 r1 = ds.dStruct(aa, rr, output, ss, no, L, ctype)
         #r1 = iCon3D() #initialization
         r1.mds3() #initial models 
