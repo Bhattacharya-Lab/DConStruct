@@ -53,9 +53,9 @@ Create an output directory `mkdir output/`.
 
 Run `python DConStruct.py -r examples/input/T0968s2.rr -a examples/input/T0968s2.fasta -s examples/input/T0968s2.ss -o output/ -c cb -x 8 -m your/modeller/path`
 
-Top predicted model will be generated at `output/T0968s2_model1.pdb`.
+Top predicted model will be generated at `output/T0968s2_model1.pdb`. The predicted 3D model is given [here](examples/output/out.pdb)
 
-DConStruct is very fast. On average it takes only a few minutes on a single core to run DConStruct. However, the running time depends on the sequence length of the target protein. For longer targets, DConStruct may take a few hours to complete.
+DConStruct is reasonably fast. On average it takes only a few minutes on a single core to run DConStruct. However, the running time depends on the sequence length of the target protein. For longer targets, DConStruct may take a few hours to complete.
 
 ## Data
 
