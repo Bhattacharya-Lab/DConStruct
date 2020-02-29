@@ -88,7 +88,7 @@ class dStruct():
                 #self.t = float(line1[3]) #considering t as thresh hold, given in each line at column 4
 
                 print ('Length             : ' + str(n))
-                print ('Threshold          : ' + str(self.t) +' (Angstrom)')
+                print ('Threshold          : Multi')
                 if (L == '10000'):
                         print ('Cutoff xL          : All')
                 else:
