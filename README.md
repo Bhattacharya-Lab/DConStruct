@@ -1,6 +1,6 @@
 # DConStruct
 
-Hybridized Distance- and Contact-based Hierarchical Structure Modeling for Folding Soluble and Membrane Proteins
+<h2>DConStruct: Hybridized distance- and contact-based hierarchical protein folding</h2>
 
 ## Installation
 
