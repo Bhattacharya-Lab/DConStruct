@@ -15,6 +15,22 @@ That's it! DConStruct is ready to be used.
 
 To see the usage instructions, run `python DConStruct.py -h`
 
+```
+Usage: DConStruct.py [options]
+
+Options:
+  -h, --help  show this help message and exit
+  -r RR       rr file in CASP format containing the contact map (mandatory)
+  -a AA       fasta file containing the amino acid sequence (mandatory)
+  -s SS       secondary structure file (mandatory)
+  -m M        MODELLER program path that contains modpy.sh script (mandatory)
+  -o OUTPUT   existing output directory path (mandatory)
+  -n NO       positive integer to be used as seed (optional); default 7
+  -c CTYPE    contact type ca or cb (optional); default ca
+  -x L        top xL contacts, where L is the sequence length (optional);
+              default all
+```
+
 ### File formats and parameters
  
 - Amino Acid (-a): The first line contains the header of the target protein and the second line contains the amino acid sequence. For example, see `./examples/input/T0968s2.fasta`
