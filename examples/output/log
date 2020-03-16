@@ -1,0 +1,25 @@
+
+*************************************************************************
+*                            DConStruct                                 *
+*  Hybridized distance- and contact-based hierarchical protein folding  *
+*  For comments, please email to bhattacharyad@auburn.edu               *
+*************************************************************************
+
+Target             : T0968s2
+Length             : 116
+Threshold          : Multi
+Cutoff xL          : 8
+Contact type       : cb
+
+Starting Stage 1 of 3 ...
+Done!
+
+Starting Stage 2 of 3 ...
+Done!
+
+Starting Stage 3 of 3 ...
+Done!
+
+Finished! Time taken = 27.0 Minutes
+
+Final model is saved in the output directory 
