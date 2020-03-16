@@ -51,6 +51,8 @@ We give an example of running DConStruct on CASP13 FM target T0968s2.
 
 Create an output directory `mkdir output/`. 
 
+Set `export OPENBLAS_NUM_THREADS=1` (recommended).
+
 Run `python DConStruct.py -r examples/input/T0968s2.rr -a examples/input/T0968s2.fasta -s examples/input/T0968s2.ss -o output/ -c cb -x 8 -m your/modeller/path`
 
 Top predicted model will be generated at `output/T0968s2_model1.pdb`. The predicted 3D model is given [here](examples/output/out.pdb) and the output screen should look like [this](examples/output/log).
