@@ -28,7 +28,7 @@ import random
 from decimal import *
 import lib.dStruct as ds
 import lib.cStruct as cs
-os.system('export OPENBLAS_NUM_THREADS=1')
+
 # take input arguments
 parser = optparse.OptionParser()
 parser.add_option('-r', dest='rr',
@@ -50,11 +50,11 @@ parser.add_option('-n', dest='no',
         default = '7',    # default 7
         help = 'positive integer to be used as seed (optional); default 7')
 parser.add_option('-c', dest='ctype',
-        default = 'ca',    # default ca 
-        help = 'contact type ca or cb (optional); default ca')
+        default = 'cb',    # default cb 
+        help = 'contact type ca or cb (optional); default cb')
 parser.add_option('-x', dest='L',
-        default = '10000',    # default all
-        help = 'top xL contacts, where L is the sequence length (optional); default all')
+        default = '8',    # default 8
+        help = 'top xL contacts, where L is the sequence length (optional); default 8')
 
 
 (options,args) = parser.parse_args()
@@ -88,9 +88,9 @@ def print_usage():
         print("             (mandatory)")
         print(" -o OUTPUT   existing output directory path (mandatory)")
         print(" -n NO       positive integer to be used as seed (optional); default 7")
-        print(" -c CTYPE    contact type ca or cb (optional); default ca")
+        print(" -c CTYPE    contact type ca or cb (optional); default cb")
         print(" -x L        top xL contacts, where L is the sequence length (optional);")
-        print("             default all\n")
+        print("             default 8\n")
 
 
 try:
@@ -310,7 +310,7 @@ def main():
         end = time. time()
         print('Done!\n')
         print ('Finished! Time taken = ' + str(round((end - start)/60, 1)) + ' Minutes\n')
-        print('Final models are saved in the output directory')
+        print('Final model is saved in the output directory')
 
 if __name__ == "__main__":
         main()
