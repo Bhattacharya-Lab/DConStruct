@@ -26,9 +26,9 @@ Options:
   -m M        MODELLER program path that contains modpy.sh script (mandatory)
   -o OUTPUT   existing output directory path (mandatory)
   -n NO       positive integer to be used as seed (optional); default 7
-  -c CTYPE    contact type ca or cb (optional); default ca
+  -c CTYPE    contact type ca or cb (optional); default cb
   -x L        top xL contacts, where L is the sequence length (optional);
-              default all
+              default 8
 ```
 
 ### File formats and parameters
@@ -53,7 +53,7 @@ Create an output directory `mkdir output/`.
 
 Run `python DConStruct.py -r examples/input/T0968s2.rr -a examples/input/T0968s2.fasta -s examples/input/T0968s2.ss -o output/ -c cb -x 8 -m your/modeller/path`
 
-Top predicted model will be generated at `output/T0968s2_model1.pdb`. The predicted 3D model is given [here](examples/output/out.pdb)
+Top predicted model will be generated at `output/T0968s2_model1.pdb`. The predicted 3D model is given [here](examples/output/out.pdb) and the output screen should look like [this](examples/output/log).
 
 DConStruct is reasonably fast. Depending on the sequence length of the target protein, DConStruct takes only a few minutes to a few hours to complete.
 
