@@ -16,6 +16,13 @@ That's it! DConStruct is ready to be used.
 To see the usage instructions, run `python DConStruct.py -h`
 
 ```
+
+*************************************************************************
+*                            DConStruct                                 *
+*  Hybridized distance- and contact-based hierarchical protein folding  *
+*  For comments, please email to bhattacharyad@auburn.edu               *
+*************************************************************************
+
 Usage: DConStruct.py [options]
 
 Options:
@@ -29,6 +36,7 @@ Options:
   -c CTYPE    contact type ca or cb (optional); default cb
   -x L        top xL contacts, where L is the sequence length (optional);
               default 8
+
 ```
 
 ### File formats and parameters
