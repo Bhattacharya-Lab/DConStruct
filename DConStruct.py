@@ -29,6 +29,15 @@ from decimal import *
 import lib.dStruct as ds
 import lib.cStruct as cs
 
+#header
+
+print("\n*************************************************************************")
+print("*                            DConStruct                                 *")
+print("*  Hybridized distance- and contact-based hierarchical protein folding  *")
+print("*  For comments, please email to bhattacharyad@auburn.edu               *")
+print("*************************************************************************\n")
+
+
 # take input arguments
 parser = optparse.OptionParser()
 parser.add_option('-r', dest='rr',
@@ -67,14 +76,6 @@ ctype = options.ctype
 L = options.L
 M = options.M
 
-
-#header
-
-print("\n*************************************************************************")
-print("*                            DConStruct                                 *")
-print("*  Hybridized distance- and contact-based hierarchical protein folding  *")
-print("*  For comments, please email to bhattacharyad@auburn.edu               *")
-print("*************************************************************************\n")
 
 def print_usage():
         print("\nUsage: DConStruct.py [options]\n")
