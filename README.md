@@ -1,6 +1,6 @@
 # DConStruct
 
-<h2>DConStruct: Hybridized distance- and contact-based hierarchical protein folding</h2>
+<h2>Hybridized distance- and contact-based hierarchical protein folding</h2>
 
 ## Installation
 
@@ -45,7 +45,7 @@ Options:
 - Contacts (-r): The first line contains the amino acid sequence followed by list of contact rows using a five-column format similar to CASP RR format. In each contact row, first two columns are the residue pairs in contact, third and fourth columns are lower and upper bounds of their distance (in Å) respectively, and fifth column is a real number indicating the probability of the two residues being in contact. For example, see `./examples/input/T0968s2.rr`
 - Secondary structure (-s): Single line containing a sequence of 3-state secondary structure (i.e. 'H', 'E' and 'C'). For example, see `./examples/input/T0968s2.ss`
 - Modeller path (-m): Modeller program path that contains `modpy.sh` script.
-- Output (-o): Existing output directory path.
+- Output (-o): Output directory path. The directory must exist.
 - Random seed (-n): Positive integer to be used as random seed.
 - Contact type (-c): To define whether the contact is C<sub>α</sub>–C<sub>α</sub> or C<sub>β</sub>–C<sub>β</sub>. Use `-c ca` for C<sub>α</sub>–C<sub>α</sub> contacts and `-c cb` for C<sub>β</sub>–C<sub>β</sub> contacts.
 - Contact cutoff (-x): To select top xL contacts, where L is the sequence length of protein. For example, use `-x 8` to select top 8L contacts.
