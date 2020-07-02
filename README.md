@@ -67,7 +67,7 @@ DConStruct is reasonably fast. Depending on the sequence length of the target pr
 
 ## Data
 
-1. [Download](http://sanger.cse.eng.auburn.edu/DConStruct/input_files.tar.gz) input data for running DConStruct on FRAGFOLD 150 dataset, CASP12 and CASP13 FM dataset, 510 Membrane protein dataset, and 15 EVfold dataset
+1. [Download](http://sanger.cse.eng.auburn.edu/DConStruct/input_files.tar.gz) input data for running DConStruct on [FRAGFOLD 150 dataset](targets/FRAGFOLD_150.txt), [CASP12 and CASP13 FM dataset](targets/CASP12_13_FM.txt), [510 Membrane protein dataset](targets/Membrane_510.txt), and [15 EVfold dataset](targets/EVfold_15.txt)
 2. [Download](http://sanger.cse.eng.auburn.edu/DConStruct/DConStruct_models.tar.gz) DConStruct predicted models for FRAGFOLD 150 dataset, CASP12 and CASP13 FM dataset, 510 Membrane protein dataset, and 15 EVfold dataset
 
 ## Cite
