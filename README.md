@@ -71,3 +71,7 @@ DConStruct is reasonably fast. Depending on the sequence length of the target pr
 - The list of Target IDs of CASP12 and CASP13 FM targets can be found [here](data/CASP12_13_FM.txt) 
 - The list of PDB chains of 510 membrane protein dataset can be found [here](data/Membrane_510.txt) 
 - The list of PDB chains of EVfold dataset can be found [here](data/EVfold_15.txt) 
+
+## Cite
+
+If you find DConStruct useful, please cite our paper in bioRxiv available as preprint.
