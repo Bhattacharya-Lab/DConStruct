@@ -2,7 +2,7 @@
 
 #  DConStruct: Hybridized distance- and contact-based hierarchical protein folding
 #
-#  Copyright (C) Bhattacharya Laboratory 2019
+#  Copyright (C) Bhattacharya Laboratory 2020
 #
 #  DConStruct is free software: you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
