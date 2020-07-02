@@ -67,10 +67,8 @@ DConStruct is reasonably fast. Depending on the sequence length of the target pr
 
 ## Data
 
-- The list of PDB chains of FRAGFOLD dataset can be found [here](data/FRAGFOLD_150.txt) 
-- The list of Target IDs of CASP12 and CASP13 FM targets can be found [here](data/CASP12_13_FM.txt) 
-- The list of PDB chains of 510 membrane protein dataset can be found [here](data/Membrane_510.txt) 
-- The list of PDB chains of EVfold dataset can be found [here](data/EVfold_15.txt) 
+1. [Download](http://sanger.cse.eng.auburn.edu/DConStruct/input_files.tar.gz) input data for running DConStruct
+2. [Download](http://sanger.cse.eng.auburn.edu/DConStruct/DConStruct_models.tar.gz) DConStruct predicted models
 
 ## Cite
 
