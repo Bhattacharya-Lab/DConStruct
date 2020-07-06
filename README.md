@@ -72,4 +72,4 @@ DConStruct is reasonably fast. Depending on the sequence length of the target pr
 
 ## Cite
 
-If you find DConStruct useful, please cite our paper in bioRxiv available as preprint.
+If you find DConStruct useful, please cite our [https://www.biorxiv.org/content/10.1101/2020.07.05.188466v1](paper in bioRxiv) available as preprint.
